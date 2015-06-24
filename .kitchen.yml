@@ -1,0 +1,44 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-12.04
+    run_list:
+      - recipe[ambari_test::environment]
+
+suites:
+  - name: server
+    driver:
+      network:
+        - ['forwarded_port', {guest: 8080, host: 8080}]
+        - ['private_network', {ip: '192.168.50.10'}]
+      vm_hostname: server.ambari.test
+    run_list:
+      - recipe[ambari::server]
+  - name: agent-0
+    driver:
+      network:
+        - ['private_network', {ip: '192.168.50.20'}]
+      vm_hostname: agent-0.ambari.test
+    run_list:
+      - recipe[ambari::agent]
+      - recipe[ambari_test::blueprint]
+  - name: agent-1
+    driver:
+      network:
+        - ['private_network', {ip: '192.168.50.21'}]
+      vm_hostname: agent-1.ambari.test
+    run_list:
+      - recipe[ambari::agent]
+  - name: agent-2
+    driver:
+      network:
+        - ['private_network', {ip: '192.168.50.22'}]
+      vm_hostname: agent-2.ambari.test
+    run_list:
+      - recipe[ambari::agent]
+      - recipe[ambari_test::cluster]
