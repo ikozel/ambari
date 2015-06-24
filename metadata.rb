@@ -1,14 +1,20 @@
-name             'ambari'
-maintainer       'JULIEN PELLET'
+name 'ambari'
+
+version '0.3.0'
+
+description 'Installs and configures Apache Ambari'
+long_description IO.read File.expand_path '../README.md', __FILE__
+
+license 'Apache 2.0'
+
+maintainer 'Julien Pellet'
 maintainer_email 'chef@julienpellet.com'
-license          'Apache 2.0'
-description      'Installs/Configures ambari'
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.2.0'
-supports 'redhat', ">= 5.0"
-supports 'centos', ">= 5.0"
-supports 'amazon', ">= 5.0"
-supports 'scientific', ">= 5.0"
-supports 'suse', ">= 11.0"
-supports 'ubuntu', ">= 12.0"
-depends 'apt'
+
+supports 'redhat', '>= 5.0'
+supports 'centos', '>= 5.0'
+supports 'amazon', '>= 5.0'
+supports 'scientific', '>= 5.0'
+supports 'suse', '>= 11.0'
+supports 'ubuntu', '>= 12.0'
+
+depends 'apt', '~> 2.7'
