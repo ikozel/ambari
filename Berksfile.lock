@@ -1,0 +1,16 @@
+DEPENDENCIES
+  ambari
+    path: .
+    metadata: true
+  ambari_test
+    path: test/fixtures/cookbooks/ambari_test
+
+GRAPH
+  ambari (0.2.0)
+    apt (~> 2.7)
+  ambari_test (0.1.0)
+    ambari (>= 0.0.0)
+    apt (~> 2.7)
+    hostsfile (~> 2.4)
+  apt (2.7.0)
+  hostsfile (2.4.5)
